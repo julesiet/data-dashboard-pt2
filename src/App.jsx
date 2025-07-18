@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import CardInfo from './components/CardInfo'
-import './App.css'
 const API_KEY = import.meta.env.VITE_SPOONACULAR_KEY
 
 const App = () => {
@@ -105,8 +104,6 @@ const App = () => {
         const response = await fetch(query);
         const json = await response.json();
 
-        console.log("Item", recipe.id, ":", json.protein, json.carbs, json.fat); 
-
         // to sum up each different macro sum
         proteinSum += parseFloat(json.protein.replace("g", ""));
         carbsSum += parseFloat(json.carbs.replace("g", ""));
@@ -137,19 +134,6 @@ const App = () => {
 
   return (
     <div className="main-container">
-
-      <div className="nav-panel">
-        <h2> Recipe Retriever! 📖 </h2>
-        <p> 
-          Search, filter and learn about your favorite foods or foods you've never heard of before!
-        </p>
-        <p className="add-info"> 
-          CREDITS: spoonacular API 
-          </p>
-        <p className="add-info mark"> 
-          DV (daily value) refers to the recommended daily intake based on the average human, will vary depending on your body ** 
-          </p>
-        </div>
 
       <div className="main-panel">
         <div className="summary-cntr">
