@@ -1,4 +1,16 @@
 import { useEffect, useState } from 'react'
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer
+} from 'recharts';
 import CardInfo from './components/CardInfo'
 const API_KEY = import.meta.env.VITE_SPOONACULAR_KEY
 
@@ -136,6 +148,61 @@ const App = () => {
     <div className="main-container">
 
       <div className="main-panel">
+        <div className="graph-cntr">
+          {count === amtofRecipes && (
+            <div className="charts-wrapper">
+              <div>
+              <h3><center> Macros per Recipe </center></h3>
+                <BarChart
+                  data={Object.entries(recipeMacros).map(([id, macros]) => {
+                    const recipe = recipeList.results.find(r => r.id === parseInt(id));
+                    return {
+                      name: recipe?.title || `Recipe ${id}`,
+                      protein: macros.protein,
+                      carbs: macros.carbs,
+                      fat: macros.fat
+                    };
+                  })}
+                  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                  width={400} height={250}
+                >
+                  <XAxis dataKey="name" tick={{ fontSize: 10 }} />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="protein" stackId="a" fill="#ffc658" />
+                  <Bar dataKey="carbs" stackId="a" fill="#82ca9d" />
+                  <Bar dataKey="fat" stackId="a" fill="#8884d8" />
+                </BarChart>
+                </div>
+
+                <div>
+              <h3><center> Average Macro Distribution </center> </h3>
+                <PieChart width={400} height={250}>
+                  <Pie
+                    data={[
+                      { name: 'Protein', value: avgProtein },
+                      { name: 'Carbs', value: avgCarbs },
+                      { name: 'Fat', value: avgFat },
+                    ]}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    label
+                    dataKey="value"
+                  >
+                    <Cell fill="#ffc658" />
+                    <Cell fill="#82ca9d" />
+                    <Cell fill="#8884d8" />
+                  </Pie>
+                  <Tooltip />
+                  <Legend />
+                </PieChart>
+            </div>
+            </div>
+          )}
+        </div>
+        
         <div className="summary-cntr">
             <div className="protein-cntr">
                 {count === amtofRecipes ? (

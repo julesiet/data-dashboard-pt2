@@ -26,7 +26,7 @@ const CardInfo = ( {image, id, title} ) => {
             // making them all into numbers instead of strings
             setProtein(parseFloat(json.protein.replace("g", ""))); 
             setCarbs(parseFloat(json.carbs.replace("g", "")));
-            setFats(parseFloat(json.fats.replace("g", "")));
+            setFats(parseFloat(json.fat.replace("g", "")));
 
             setProteinDV(json.good[0].percentOfDailyNeeds);
             setCarbsDV(json.bad[3].percentOfDailyNeeds);

@@ -29,7 +29,6 @@
   padding: 250px 50px;
   border: 2px solid #36432f;
   border-radius: 5px;
-  max-height: fit-content;
 }
 
 .main-panel {
@@ -104,15 +103,36 @@
   color: #36432f;
 }
 
+.extd-info-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.extd-info-card:active {
+  transform: scale(0.95);
+}
+
 .recipe-panel {
   display: flex;
   flex-direction: column;
+  row-gap: 5px;
   padding: 50px;
+}
+
+.charts-wrapper {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+}
+
+.recipe-info {
+  text-align: center;
 }
 
 .info-panel {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .card-details {
@@ -120,13 +140,32 @@
 }
 
 .attr-table {
+  font-size: 20px;
   padding: 20px;
 }
 
+.recharts-default-legend {
+  background-color: rgba(231, 236, 228, 0.75);
+  border: solid 2px #36432f;
+  position: relative;
+  font-weight: bold;
+  top: 15px;
+
+}
+
 .hover-over-bar-chart {
-  background-color: rgba(147, 169, 132, 0.5);
+  background-color: rgba(231, 236, 228, 0.75);
   text-align: center;
   width: 100px;
   padding: 20px;
   color:#36432f;
+}
+
+.data-box {
+  display: flex;
+  padding: 10px;
+  font-size: 20px;
+  justify-content: center;
+  column-gap: 20px;
+  flex-direction: row;
 }

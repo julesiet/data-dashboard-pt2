@@ -1,8 +1,6 @@
 import { Outlet, Link } from "react-router"
-import { useState } from "react"
 
 const Layout = () => {
-    const [number, setNumber] = useState(5);
 
     return (
         <div className="main-container">
